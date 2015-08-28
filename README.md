@@ -1,6 +1,6 @@
 # WindowsOSHealthCheck
 .SYNOPSIS
-    CSC Windows Server Health Check Script
+    Automaated Windows Server Health Check Script
 
 .DESCRIPTION
     Will run a number of queries against a list of servers retriving information useful to Wintel Server Engineers. The main purpose is to
