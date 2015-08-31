@@ -25,19 +25,19 @@
     Switch value to have HTML report sent as an email. Defaults to off. 
 
 .EXAMPLE
-    OSHealthCheckv4.74.PS1
+    OSHealthCheckv4.75.PS1
     Run the health check with the default values. The server scanned will be the local computer, output folder is .\ and verbose mode and email are disabled.
 
 .EXAMPLE
-    OSHealthCheckv4.74.PS1 -Computers "Server1","Server2","Server3"
+    OSHealthCheckv4.75.PS1 -Computers "Server1","Server2","Server3"
     Run the health check against Server1, Server2 and Server3. 
 
 .EXAMPLE
-    OSHealthCheckv4.74.PS1 -VerboseMode -EmailReport
+    OSHealthCheckv4.75.PS1 -VerboseMode -EmailReport
     Run the health check with the default values for -computers and -outputfilepath, but with VerboseMode ane EmailReport enabled.
 
 .EXAMPLE
-    OSHealthCheckv4.74.PS1 -Computers C:\Servers.txt -OutputFilePath "C:\Scripts\Out" -VerboseMode -EmailReport
+    OSHealthCheckv4.75.PS1 -Computers C:\Servers.txt -OutputFilePath "C:\Scripts\Out" -VerboseMode -EmailReport
     Run the health check against a list of computers stored in C:\Servers.txt. HTML reports will be saved to C:\Scripts\Out. Verbose mode is on, so all content will be written to the Powershell Console and the HTML report will be sent via email.
 
 
@@ -55,7 +55,7 @@
         [Parameter(Mandatory=$False,
             Position=1,
             HelpMessage="Output path for HTML reports")]
-        [string]$OutputFilePath = ".\",
+        [string]$OutputFilePath = "$($(Resolve-Path .\).Path)",
 		[Parameter(Mandatory=$False,
 		    Position=2,
 		    HelpMessage="Choose whether script will be run in verbose or quiet mode.")]
@@ -106,10 +106,10 @@ network connectivity and RDP may not be working. The server needs to be manually
 $global:strHealthState = "Green"
 
 # Email variables
-$strEmailTo = "cnicho25@csc.com.au"
+$strEmailTo = ""
 $strEmailSubject = "Automated System Health Check Report for $($objComputer)"
-$strEmailSMTP = "ausmtp01.amp.com.au"
-$strEmailFrom = "AMPAUSTMCSAP01@amp.com.au"
+$strEmailSMTP = ""
+$strEmailFrom = ""
 $global:strEmail = $EmailReport
 
 #css Style
