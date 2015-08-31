@@ -182,9 +182,7 @@ function get-hbainfo {
                 "Active" = $objHBA.Active
 
             }    
-        }
-    
-    
+        }    
     } else {
     if ($global:strVerbose){
         write-host "No FC HBAs found on server $($objComputer)" -ForegroundColor Yellow
@@ -192,19 +190,17 @@ function get-hbainfo {
     #$colHBAInfo = "No FC HBAs found on server $($objComputer)"
         $colHBAInfo +=  [PSCustomObject] @{
 
-                "Computername" = "No FC HBAs found on server $($objComputer)"
-                "Node WWN" = ""
-                "Model" = ""
-                "Model Description" = ""
-                "Driver Version" = ""
-                "Firmware Version" = ""
-                "Active" = ""
+			"Computername" = "No FC HBAs found on server $($objComputer)"
+			"Node WWN" = ""
+			"Model" = ""
+			"Model Description" = ""
+			"Driver Version" = ""
+			"Firmware Version" = ""
+			"Active" = ""
 
-            } 
-
+		}
     }
 $colHBAInfo
-
 }
 
 # Operating System Information
@@ -260,11 +256,8 @@ function get-osinfo {
             "Server Domain Roles" = $($colComputerSystem.Roles) -join ", "
             "RDP State" = $objRdpStateFinal        
         
-        } 
-
-
-$colOSSystemInfoDetails 
-
+        }
+$colOSSystemInfoDetails
 }
 
 
@@ -353,10 +346,7 @@ function Get-ProcessInfo {
             "Process Name" = $objProcess.ProcessName
             "Process Path" = $objProcess.ExecutablePath
         }
-
     }
-
-
 $colProcessDetail
 }
 
@@ -398,10 +388,7 @@ function get-NICinfo {
         "Connection Status" = $objNicConnectionStatus
 
         }
-
-    }    
-
-
+    }
 $colNICDetails
 }
 
@@ -434,10 +421,7 @@ function get-cpuinfo {
             "Current load %" = $objCPU.LoadPercentage
 
         }
-
     }
-
-
 $colCPUDetails
 }
 
@@ -527,11 +511,8 @@ function get-topProcessesMEM {
             "Working Set (MB)" = [Math]::Round(($($objProcessMemory.WorkingSet/1MB)),0)
 
         }
-
     }
-
 $colProcessMemoryInfo
-
 }
 
 # Get the last reboot reason from the system log User32 event
@@ -611,7 +592,6 @@ function get-InstalledPatches {
             }
         }
     }
-
 $colInstalledPatchesInfo
 }
 
@@ -659,16 +639,16 @@ function get-systemandapplogs {
         #$colSystemEventsInfo = "$(($error[0]).exception.Message)"
         $colSystemEventsInfo += [PSCustomObject] @{
         
-                "Index" = "No errors or warnings found in System and Application Logs"
-                "Type" = ""
-                "Time" = ""
-                "Event ID" = ""
-                "Log Name" = ""
-                "Source" = ""
-                "Message" = ""
-            }
+			"Index" = "No errors or warnings found in System and Application Logs"
+			"Type" = ""
+			"Time" = ""
+			"Event ID" = ""
+			"Log Name" = ""
+			"Source" = ""
+			"Message" = ""
+		}
     }
-    $colSystemeventsInfo
+$colSystemeventsInfo
 }
 
 # Get the IP address details of each logical network connection
@@ -701,7 +681,6 @@ function get-NicIPAddress {
             "Secondary WINS Server" = $objNicIp.WINSSecondaryServer
             "MAC Address" = $objNicIp.MACAddress
         }
-
     }
 $colNicIpDetails
 }
@@ -1067,7 +1046,6 @@ $objHtmlContents = @"
 		}
 
 	}
-
 
 # Return the system locale to the original
 [System.Threading.Thread]::CurrentThread.CurrentCulture = $strOriginalLocale
